@@ -4,7 +4,7 @@ package com.k2thend.gamesapplication.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Datum {
+public class DataGames {
 
     @SerializedName("id")
     @Expose

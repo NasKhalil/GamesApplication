@@ -10,13 +10,13 @@ public class ApiResponse {
 
     @SerializedName("data")
     @Expose
-    private List<Datum> data = null;
+    private List<DataGames> data = null;
 
-    public List<Datum> getData() {
+    public List<DataGames> getData() {
         return data;
     }
 
-    public void setData(List<Datum> data) {
+    public void setData(List<DataGames> data) {
         this.data = data;
     }
 

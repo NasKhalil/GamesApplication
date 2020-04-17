@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.k2thend.gamesapplication.R;
-import com.k2thend.gamesapplication.model.Datum;
+import com.k2thend.gamesapplication.model.DataGames;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,10 +18,10 @@ import java.util.List;
 import java.util.Locale;
 
 public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.MyViewHolder> {
-    List<Datum> datumList;
+    List<DataGames> dataGamesList;
 
-    public GamesAdapter(List<Datum> datumList){
-        this.datumList = datumList;
+    public GamesAdapter(List<DataGames> dataGamesList){
+        this.dataGamesList = dataGamesList;
     }
 
     @NonNull
@@ -34,14 +34,14 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Datum datum = datumList.get(position);
-        holder.homeTeam.setText(datum.getHomeTeam().getFullName());
-        holder.awayTeam.setText(datum.getVisitorTeam().getFullName());
+        DataGames dataGames = dataGamesList.get(position);
+        holder.homeTeam.setText(dataGames.getHomeTeam().getFullName());
+        holder.awayTeam.setText(dataGames.getVisitorTeam().getFullName());
 
 
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-            Date format = dateFormat.parse(datum.getDate());
+            Date format = dateFormat.parse(dataGames.getDate());
             holder.date.setText(dateFormat.format(format));
 
         } catch (ParseException e) {
@@ -49,16 +49,16 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.MyViewHolder
         }
 
         //holder.date.setText(datum.getDate());
-        holder.time.setText(datum.getStatus());
-        holder.abrevH.setText(datum.getHomeTeam().getAbbreviation());
-        holder.abrevA.setText(datum.getVisitorTeam().getAbbreviation());
-        holder.score.setText(datum.getHomeTeamScore()+ "-"+ datum.getVisitorTeamScore());
+        holder.time.setText(dataGames.getStatus());
+        holder.abrevH.setText(dataGames.getHomeTeam().getAbbreviation());
+        holder.abrevA.setText(dataGames.getVisitorTeam().getAbbreviation());
+        holder.score.setText(dataGames.getHomeTeamScore()+ "-"+ dataGames.getVisitorTeamScore());
 
     }
 
     @Override
     public int getItemCount() {
-        return datumList.size();
+        return dataGamesList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
